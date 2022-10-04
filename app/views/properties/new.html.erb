@@ -1,0 +1,9 @@
+<h3> Create a Property </h3>
+
+<%= form_for @property, url: create_path do |form|%>
+<%=form.text_field :name%>
+<br/>
+<%= form.text_field :address %>
+<br/>
+<%= form.submit %>
+<% end %>

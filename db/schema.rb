@@ -18,8 +18,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_04_154732) do
     t.integer "beds"
     t.integer "bathrooms"
     t.integer "roomsize"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_properties_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -32,6 +34,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_04_154732) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "name"
+    t.string "role", default: "user"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -7,6 +7,7 @@ class CreateProperties < ActiveRecord::Migration[7.0]
       t.integer :beds 
       t.integer :bathrooms 
       t.integer :roomsize
+      t.belongs_to :user
 
       t.timestamps
     end

@@ -8,10 +8,19 @@
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, class: 'form-control form-control-lg' %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-lg' %>
   </div>
 
+<br/>
+    <%= f.label :role %>
+  <div class='cont'><%=  f.select :role, [['Owner'],['Student']]%></div>
+<br/>
   <div class="form-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>

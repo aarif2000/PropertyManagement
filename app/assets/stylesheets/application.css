@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+.cont #user_role{
+    width: 100%;
+    font-size: 150%;
+}
