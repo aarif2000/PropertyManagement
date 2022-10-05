@@ -6,7 +6,9 @@ Rails.application.routes.draw do
       passwords: 'users/passwords',
       confirmations: 'users/confirmations'
     }
-    resources :properties
+    resources :properties, except: %i[create]
+    
+    post 'properties/new', to: 'properties#create'
 
     # get 'showproperty', to: 'properties#show'
     # post 'createproperty', to: 'properties#create' , as: 'create'

@@ -1,3 +1,48 @@
-<%= @property.each do |p|%>
-<%= p.name%>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <h4 class="mt-4 mb-4 display-4">Show details of property <%= @properties.id %></h4>
+  </div>
+  <div class="row justify-content-center">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Name:</th>
+          <td><%= @properties.name %></td>
+        </tr>
+         <tr>
+          <th>Description:</th>
+          <td><%= @properties.description %></td>
+        </tr>
+         <tr>
+          <th>City:</th>
+          <td><%= @properties.city %></td>
+        </tr>
+        <tr>
+          <th>Address: </th>
+          <td><%= @properties.address %></td>
+        </tr>
+
+         <tr>
+          <th>Price: </th>
+          <td><%= @properties.price %></td>
+        </tr>
+
+         <tr>
+          <th>Beds: </th>
+          <td><%= @properties.beds %></td>
+        </tr>
+
+         <tr>
+          <th>Bathrooms: </th>
+          <td><%= @properties.bathrooms %></td>
+        </tr>
+
+         <tr>
+          <th>Roomsize: </th>
+          <td><%= @properties.roomsize %></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

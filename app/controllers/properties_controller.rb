@@ -1,23 +1,30 @@
 class PropertiesController < ApplicationController
     def index 
-        @property=Property.all
-    end
+        @properties=Property.all
+    end 
 
     def show 
-        
+        @properties=Property.find(params[:id])
     end
-    def new
-        @property = Property.new
+
+    def new 
+        @properties=Property.new 
     end
+
     def create 
-        @property = Property.new(propertyparams)
-        @property.save
+        @properties=Property.new(propertyparams)
+        @properties.user = current_user if user_signed_in?
+        @properties.save 
         redirect_to root_path
     end
-
+    def destroy
+        @p = Property.find_by(id: params[:id])
+        @p.destroy
+        redirect_to root_path
+    end
     private 
 
-    def propertyparams
-        params.require(:property).permit(:name,:address)
+    def propertyparams 
+        params.permit(:name,:description,:city, :address,:price,:beds,:bathrooms,:roomsize,:amenities1,:amenities2,:amenities3)
     end
 end

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row justify-content-center">
+  </div>
+  <%= link_to 'Create Property', new_property_path %>
+  <br>
+
+    <%@properties&.each do |property|%>
+    <table>
+    <tr>
+        Property Name : <%= property.name %>
+        <br/>
+        Property Description : <%= property.description %>
+        <td><%= link_to 'Show', property_path(property.id) %></td>
+        <br/>
+        <td><%= link_to 'Edit', edit_property_path(property.id) %></td>
+        <br/>
+        <td><%= link_to 'Delete', property,data: {turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+              <br/>
+        </td>
+    </tr>
+    </table>
+<%end%>
+</div>

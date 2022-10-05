@@ -1,0 +1,8 @@
+<h3>Update Property Details</h3>
+<%= form_with model: @property do |form| %>
+  <%= form.text_field :name, placeholder: "name" %>
+  <br/>
+  <%= form.text_field :address, placeholder: "address" %>
+  <br/>
+  <%= form.submit %>
+<% end %>
