@@ -9,10 +9,7 @@
           <th>Name:</th>
           <td><%= @properties.name %></td>
         </tr>
-         <tr>
-          <th>Description:</th>
-          <td><%= @properties.description %></td>
-        </tr>
+        
          <tr>
           <th>City:</th>
           <td><%= @properties.city %></td>
@@ -37,12 +34,11 @@
           <td><%= @properties.bathrooms %></td>
         </tr>
 
-         <tr>
-          <th>Roomsize: </th>
-          <td><%= @properties.roomsize %></td>
-        </tr>
+       
 
       </tbody>
     </table>
+
+    <%= link_to "Add Amenities", amenities_path%>
   </div>
 </div>

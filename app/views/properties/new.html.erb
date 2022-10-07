@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h4 class="mt-4 mb-4 display-4">New Property</h4>
+    <h4 class="mt-4 mb-4 display-4 text-center">New Property</h4>
   </div>
   <div class="row justify-content-center">
         <%= form_with do |form| %>
@@ -8,10 +8,7 @@
             <%= form.label :name %>
             <%= form.text_field :name, class: 'form-control' %>
           </div>
-          <div class="form-group">
-            <%= form.label :description %>
-            <%= form.text_field :description, class: 'form-control' %>
-          </div>
+         
 
           <div class="form-group">
             <%= form.label :city %>
@@ -22,35 +19,34 @@
             <%= form.label :address %>
             <%= form.text_area :address, class: 'form-control' %>
           </div>
-
             <div class="form-group">
+            <%= form.label :property_type %>
+            <div class='cont'><%=  form.select :property_type, [['Hostel'],['Pg']]%></div>
+          </div>
+          <div class="form-group">
+            <%= form.label :sharing %>
+            <div class='cont'><%=  form.select :property_type, [['Single'],['Double']]%></div>
+          </div>
+           <div class="form-group">
             <%= form.label :price %>
             <%= form.number_field :price, class: 'form-control' %>
           </div>
-
 
             <div class="form-group">
             <%= form.label :beds %>
             <%= form.number_field :beds, class: 'form-control' %>
           </div>
-
             <div class="form-group">
             <%= form.label :bathrooms %>
             <%= form.number_field :bathrooms, class: 'form-control' %>
           </div>
-
-
-          <div class="form-group">
-            <%= form.label :roomsize %>
-            <%= form.number_field :roomsize, class: 'form-control' %>
-          </div>
-
-              <%= form.file_field :photo, accept: 'image/png,image/jpeg'%>
-
+      
+              <%= form.label "Property Photo"%>
+              <br/>
+              <%= form.file_field :avatar, accept: 'image/png,image/jpeg'%>
           <div class="form-group">
             <%= form.submit class: 'form-control btn-primary' %>
           </div>
-
     <% end %>
   </div>
 </div>
