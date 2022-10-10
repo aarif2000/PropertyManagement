@@ -9,13 +9,18 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations'
   }
   resources :properties, except: %i[create]
-  resources :amenities, except: %i[create]
+  resources :properties
+
 
 
   post 'properties/new', to: 'properties#create'
-  post 'amenities/new', to: 'amenities#create'
   post '/properties/:id/edit', to: 'properties#update'
-  # get 'showproperty', to: 'properties#show'
-  # post 'createproperty', to: 'properties#create' , as: 'create'
-  # get 'new', to: 'properties#new'
+
+
+  get 'admin_booking_status', to: "bookings#admin_booking_status"
+  get 'booking_checkout', to: "bookings#booking_checkout"
+  get 'cancel_url', to: "bookings#cancel_url"
+  get 'ipn_url', to: "bookings#ipn_url"
+  get 'return_url', to: "bookings#return_url"
+  get '/users/:id/subscription_index', to: "bookings#subscription_index", as: :users_subscriptions
 end

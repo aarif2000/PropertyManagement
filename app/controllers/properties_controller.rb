@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 class PropertiesController < ApplicationController
   def index
-   Pagy::DEFAULT[:items] = 1
-   @pagy, @properties = pagy(Property.all.order(created_at: :desc))
+    @search = Property.ransack(params[:search])
+    @properties= @search.result(distinct: true)
+   @pagy, @properties = pagy(@properties.order(created_at: :desc))
   end
 
   def show
@@ -35,6 +36,6 @@ class PropertiesController < ApplicationController
   private
 
   def propertyparams
-    params.permit(:name, :city, :address, :property_type, :sharing, :price, :beds, :bathrooms, :avatar)
+    params.permit(:name, :city, :address, :property_type, :sharing, :price, :beds, :bathrooms,:amenities_1,:amenities_2,:amenities_3, :avatar =>[])
   end
 end

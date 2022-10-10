@@ -1,44 +1,40 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h4 class="mt-4 mb-4 display-4">Show details of property <%= @properties.id %></h4>
+    <h4 class="mb-4 display-4">property <%= @properties.id %></h4>
   </div>
   <div class="row justify-content-center">
-    <table class="table">
-      <tbody>
-        <tr>
-          <th>Name:</th>
-          <td><%= @properties.name %></td>
-        </tr>
+          <%=render partial: 'layouts/caras', locals: {props: @properties}%>
+          Name:
+          <%= @properties.name %>
+            <br/>
+          City:
+          <%= @properties.city %>
+            <br/>
         
-         <tr>
-          <th>City:</th>
-          <td><%= @properties.city %></td>
-        </tr>
-        <tr>
-          <th>Address: </th>
-          <td><%= @properties.address %></td>
-        </tr>
+          Address:
+          <%= @properties.address %>
+            <br/>
 
-         <tr>
-          <th>Price: </th>
-          <td><%= @properties.price %></td>
-        </tr>
+          Price:
+          <%= @properties.price %>
+        <br/>
+          Beds: 
+          <%= @properties.beds %>
+          <br/>
+          Bathrooms:
+          <%= @properties.bathrooms %>
+          <br/>
 
-         <tr>
-          <th>Beds: </th>
-          <td><%= @properties.beds %></td>
-        </tr>
 
-         <tr>
-          <th>Bathrooms: </th>
-          <td><%= @properties.bathrooms %></td>
-        </tr>
 
-       
 
-      </tbody>
-    </table>
+<ul class="list-group mt-3">
+<h5 class='text-center'> Services We Give </h5>
+  <li class="list-group-item text-center"><%= @properties.amenities_1%></li>
+  <li class="list-group-item text-center"><%= @properties.amenities_2%></li>
+  <li class="list-group-item text-center"><%= @properties.amenities_3%></li>
+  
+</ul>
 
-    <%= link_to "Add Amenities", amenities_path%>
   </div>
 </div>

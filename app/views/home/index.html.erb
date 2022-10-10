@@ -1,2 +1,22 @@
-<h1>This is Home Page</h1>
 
+<h1 align ="center">Welcome to Hostel Management System</h1>
+<div class="container">
+	<div style="margin-bottom: 10px;">
+		<% if user_signed_in? %>
+			<ul class="nav nav-pills">
+				<li><%= link_to 'See All Available properties', properties_path, class: 'btn btn-info' %></li>
+				
+				<li><%= link_to 'Subscriptions', users_subscriptions_path(current_user.id), class: 'btn btn-info' %></li>
+				
+				<%# if current_user.bookings.present? %>
+					<li><%= link_to 'See All Your Booking', user_session_path(current_user), class: 'btn btn-info' %></li>
+				<%#end%>
+				
+				<% if user_signed_in? && current_user.role=='Admin' %>
+					<li><%= link_to 'Hostel Bookings status', admin_booking_status_path, class: 'btn btn-info' %></li>
+				<%end%>
+			</ul>
+		<%end%>
+	</div>
+	
+</div>

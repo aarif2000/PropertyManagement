@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_06_144810) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_10_105048) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,12 +39,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_06_144810) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "amenities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "amenity_name"
-    t.bigint "property_id"
+  create_table "bookings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "property_id"
+    t.datetime "checkin_date"
+    t.datetime "checkout_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["property_id"], name: "index_amenities_on_property_id"
   end
 
   create_table "properties", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -53,6 +54,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_06_144810) do
     t.string "address"
     t.string "property_type"
     t.string "sharing"
+    t.string "amenities_1"
+    t.string "amenities_2"
+    t.string "amenities_3"
     t.integer "price"
     t.integer "beds"
     t.integer "bathrooms"
@@ -60,6 +64,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_06_144810) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_properties_on_user_id"
+  end
+
+  create_table "subscriptions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "subscription_id"
+    t.datetime "checkin_date"
+    t.datetime "checkout_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transactions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

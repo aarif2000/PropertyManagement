@@ -38,3 +38,8 @@ img {
   ul {
     columns: 3;
   }
+
+  .carousel-control.left, .carousel-control.right {
+    left: 0 !important;
+    z-index: 1 !important;
+  }
