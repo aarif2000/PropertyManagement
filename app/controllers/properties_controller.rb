@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 class PropertiesController < ApplicationController
   def index
-    @q = Property.ransack(params[:search])
+    @q = Property.ransack(params[:q])
     @properties= @q.result(distinct: true)
-   @pagy, @properties = pagy(@properties.order(created_at: :desc))  
-    # @properties = current_user.property.all
+    @pagy, @properties = pagy(@properties.order(created_at: :desc))
+    @properties = current_user.property.all if current_user.role == 'Owner'
    
   end
 
@@ -26,6 +26,7 @@ class PropertiesController < ApplicationController
 
   def update
     @property = Property.find(params[:id]).update(propertyparams)
+    flash[:notice]= "Successfully Updated  Property"
     redirect_to root_path
 
   end
@@ -33,6 +34,8 @@ class PropertiesController < ApplicationController
   def destroy
     @properties = Property.find_by(id: params[:id])
     @properties.destroy
+    flash[:alert]= "Successfully Deleted  Property"
+    
     redirect_to root_path
   end
 

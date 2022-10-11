@@ -5,7 +5,7 @@ class Property < ApplicationRecord
   has_many :bookings 
 
   has_many_attached :avatar
-  validates :name, presence: true
-  validates :city, presence: true
-  validates :address, presence: true
+  # validates :name, presence: true
+  # validates :city, presence: true
+  # validates :address, presence: true
 end
