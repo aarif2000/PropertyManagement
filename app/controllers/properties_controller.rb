@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 class PropertiesController < ApplicationController
   def index
-    @search = Property.ransack(params[:search])
-    @properties= @search.result(distinct: true)
-   @pagy, @properties = pagy(@properties.order(created_at: :desc))
+    @q = Property.ransack(params[:search])
+    @properties= @q.result(distinct: true)
+   @pagy, @properties = pagy(@properties.order(created_at: :desc))  
+    # @properties = current_user.property.all
+   
   end
 
   def show
@@ -18,6 +20,7 @@ class PropertiesController < ApplicationController
     @properties = Property.new(propertyparams)
     @properties.user = current_user if user_signed_in?
     @properties.save
+    flash[:notice]= "Successfully Created Property"
     redirect_to root_path
   end
 
@@ -36,6 +39,6 @@ class PropertiesController < ApplicationController
   private
 
   def propertyparams
-    params.permit(:name, :city, :address, :property_type, :sharing, :price, :beds, :bathrooms,:amenities_1,:amenities_2,:amenities_3, :avatar =>[])
+    params.permit(:name, :city, :address, :property_type, :sharing, :property_rent,:no_of_rooms,:available_rooms, :beds, :bathrooms,:amenities_1,:amenities_2,:amenities_3, :avatar =>[])
   end
 end

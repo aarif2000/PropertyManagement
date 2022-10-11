@@ -44,6 +44,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_10_105048) do
     t.integer "property_id"
     t.datetime "checkin_date"
     t.datetime "checkout_date"
+    t.integer "no_of_rooms"
+    t.boolean "confirm"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -57,7 +59,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_10_105048) do
     t.string "amenities_1"
     t.string "amenities_2"
     t.string "amenities_3"
-    t.integer "price"
+    t.integer "property_rent"
+    t.integer "no_of_rooms"
+    t.integer "available_rooms"
     t.integer "beds"
     t.integer "bathrooms"
     t.bigint "user_id"
@@ -68,7 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_10_105048) do
 
   create_table "subscriptions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "subscription_id"
+    t.integer "transaction_id"
     t.datetime "checkin_date"
     t.datetime "checkout_date"
     t.datetime "created_at", null: false
@@ -76,7 +80,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_10_105048) do
   end
 
   create_table "transactions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.float "amount"
     t.integer "user_id"
+    t.integer "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

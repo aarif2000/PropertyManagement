@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   root 'home#index'
+  get 'profile', to: 'home#profile' 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations'
   }
   resources :properties, except: %i[create]
-  resources :properties
+  resources :booking 
 
 
 

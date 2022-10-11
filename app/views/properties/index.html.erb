@@ -1,41 +1,58 @@
 <div class="container">
   <div class="row justify-content-center">
-  <%= search_form_for @search do |form| %>
+  <%= search_form_for @q do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name_cont %>
   <%= form.submit %>
   <% end %>
-  <%= sort_link(@search, :price) %>
+  <%= sort_link(@q, :price) %>
   </div>
-  <%= link_to 'Create Property', new_property_path, class: 'btn btn-info' %>
   <br>
     <%@properties&.each do |property|%>
     <div style="display: flex; flex-direction justify-content center">
     <div>
-    <%=image_tag url_for(property.avatar.first), size: "450x300" if property.avatar.attached?%>  
+    <%=image_tag url_for(property.avatar.first), size: "300x300" if property.avatar.attached?%>  
     <hr/>
     </div>
+    
     <div>
     <table>
-    <tr>
+    <% if user_signed_in? && current_user.role=='Student'%>
+
+
+     <%= property.name %>
+         <br>
+         <%= property.city %>
+         <br>
+         <%= property.property_rent %>
+         <br>
+         <%=property.beds%>
+         <td><%= link_to 'Click to show more ', property_path(property.id) %></td>
+    <% else %>
+   <tr>
         Property Name : <%= property.name %>
         <br/>
         <td><%= link_to 'Show', property_path(property.id) %></td>
         <br/>
         <td><%= link_to 'Edit', edit_property_path(property.id) %></td>
         <br/>
-        <td><%= link_to 'Delete', property,data: {turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+        <td><%= link_to 'Delete', property ,data: {turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
               <br/>
         </td>
     </tr>
+
+    <% end %>
     </table>
     </div>
     </div>
 
 <%end%>
+
    <%== pagy_bootstrap_nav(@pagy) %>
 
 </div>
+
+
 
 
 

@@ -11,7 +11,9 @@ class CreateProperties < ActiveRecord::Migration[7.0]
       t.string :amenities_1
       t.string :amenities_2
       t.string :amenities_3
-      t.integer :price
+      t.integer :property_rent 
+      t.integer :no_of_rooms 
+      t.integer :available_rooms
       t.integer :beds
       t.integer :bathrooms
       t.belongs_to :user
