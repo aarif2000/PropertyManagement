@@ -44,4 +44,12 @@ img {
     z-index: 1 !important;
   }
 
-  
+  .properties{
+    margin : 0px;
+    padding: 0px;
+  }
+
+  .carousel {
+    position: relative;
+    display: flex !important;
+  }
