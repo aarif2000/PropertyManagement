@@ -25,7 +25,7 @@ class BookingsController < ApplicationController
    end
 
    def show
-       @property = Property.find(params[:hostel_id])
+       @booking = Property.find(params[:property_id])
    end
 
    def confirm_booking
@@ -76,10 +76,9 @@ class BookingsController < ApplicationController
    def create_booking
        @booking = Booking.new({:no_of_rooms => session[:rooms], :checkin_date => session[:checkin_date], :checkout_date => session[:checkout_date], :user_id => current_user.id, :property_id => session[:property_id]})
        @booking.save
-       
-       @hostel = Hostel.find(session[:hostel_id])
-       @booked = Booking.where(:hostel_id => session[:hostel_id]).sum(:no_of_rooms)
-       @hostel.available_rooms = @hostel.no_of_rooms - @booked
+       @hostel = Booking.find(session[:property_id])
+       @booked = Booking.where(:property_id => session[:property_id]).sum(:no_of_rooms)
+       @hostel.available_rooms = @properties.no_of_rooms - @booked
        @hostel.save
    end
 

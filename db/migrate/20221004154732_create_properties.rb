@@ -11,10 +11,14 @@ class CreateProperties < ActiveRecord::Migration[7.0]
       t.string :amenities_1
       t.string :amenities_2
       t.string :amenities_3
+      t.string :protocol_1 
+      t.string :protocol_2
+      t.string :protocol_3
       t.integer :property_rent 
       t.integer :no_of_rooms 
       t.integer :available_rooms
       t.integer :beds
+      t.string :status
       t.integer :bathrooms
       t.belongs_to :user
 

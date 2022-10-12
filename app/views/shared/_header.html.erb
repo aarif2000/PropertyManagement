@@ -20,7 +20,7 @@
       <%= link_to 'Show Your Listed Properites', properties_path, class: 'btn btn-danger'%>
       <%elsif user_signed_in? && current_user.role=='Student' %>
       <%= link_to 'Show all Available Properites', properties_path, class: 'btn btn-danger'%>
-      <li><%= link_to 'See All Your Booking', booking_index_path(current_user), class: 'btn btn-info' %></li>
+      <%# <li><%= link_to 'See All Your Booking', booking_index_path(current_user), class: 'btn btn-info' %></li> 
       <% end %>
       </ul>
     </div>

@@ -1,11 +1,13 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h4 class="mb-4 display-4">Property Details  <%= @properties.id %></h4>
+    <h4 class="mb-4 display-4">Property ID  <%= @properties.id %></h4>
   </div>
   <div class="row">
           <%=render partial: 'layouts/caras', locals: {props: @properties}%>
 
-          <div class="properties m-5", style='border: 2px solid darkred; padding: 60px;'>
+          <div class="properties m-5", style='border: 2px solid darkred; padding: 30px;'>
+           <h5 align="center"> Property Details    </h5>
+           <br>
             Name:
             <%= @properties.name %>
               <br/>
@@ -29,24 +31,54 @@
             <br/>
             Bathrooms:
             <%= @properties.bathrooms %>
+              <br>
+               Sharing : 
+            <%= @properties.sharing %>
+              <br>
+              <br>
+
+             Uploaded  by <%= @properties.user.name%>
+             <br>
+             Contact  <%= @properties.user.email%>
+             <br>
             <br/>
             <br/>
           </div>
+
+     
+    
+          <div class="properties m-5", style='border: 2px solid darkred; padding: 15px;'>
+              <h5 align="center"> Amenities   </h5>
+              <br>
+            First Amenities : 
+            <%= @properties.amenities_1 %>
+              <br/>
+              <br/>
+            Second Amenities : 
+            <%= @properties.amenities_2 %>
+              <br/>
+              <br/>
+            Third Amenities : 
+            <%= @properties.amenities_3 %>
+              <br/>
+              <br/>
+          </div>
     </div>
+    
+    <div class="properties m-1", style='border: 2px solid darkred; padding: 15px;'>
+              <h5 align="center"> Protocols   </h5>
+           <ul>
+           <% @properties.protocol_1%>
+           
+
+           </ul>
+          </div>
+
  <%# <%= render 'bookings/new'%> 
- <div class="card text-center">
-  <div class="card-header">
-    Featured
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-  <div class="card-footer text-muted">
-    2 days ago
-  </div>
-</div>
+
+ <% if user_signed_in? && current_user.role=='Student'%>
+ <%= link_to "Book", booking_path(@properties.id), class: 'btn btn-primary' %>
+<% end %>
 
   </div>
 </div>

@@ -10,13 +10,13 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations'
   }
   resources :properties, except: %i[create]
-  resources :booking 
+  resources :bookings
 
 
 
   post 'properties/new', to: 'properties#create'
   post '/properties/:id/edit', to: 'properties#update'
-
+  post 'booking_path', to: 'bookings#create'
 
   get 'admin_booking_status', to: "bookings#admin_booking_status"
   get 'booking_checkout', to: "bookings#booking_checkout"
