@@ -21,11 +21,12 @@ class BookingsController < ApplicationController
        end
        @booked = Booking.where(hostel_id: @hostel).sum(:no_of_rooms)
        @hostel.available_rooms = @property.no_of_rooms - @booked
+       debugger
        @hostel.save
    end
 
    def show
-       @booking = Property.find(params[:property_id])
+       @booking = Property.find(params[:id])
    end
 
    def confirm_booking

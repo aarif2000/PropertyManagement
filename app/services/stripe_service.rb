@@ -38,7 +38,10 @@ class StripeService
       currency: 'usd',
       source: card_id,
       customer: stripe_customer_id,
-      description: "Amount $#{amount_to_be_paid} charged for #{pet.petname}"
+      description: "Amount $#{amount_to_be_paid} charged for #{pet}"
     })
+  end
+  def book_property(props,user)
+    props.tenants << user
   end
 end

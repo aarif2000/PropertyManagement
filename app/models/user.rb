@@ -7,5 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable
 
-  has_many :property
+  has_many :properties
+
+  belongs_to :property, optional: true
 end

@@ -11,17 +11,13 @@ Rails.application.routes.draw do
   }
   resources :properties, except: %i[create]
   resources :bookings
-
-
+  resources :checkout, only: [:create]
 
   post 'properties/new', to: 'properties#create'
   post '/properties/:id/edit', to: 'properties#update'
   post 'booking_path', to: 'bookings#create'
+  post '/charge/:id', to: 'home#charge'
+   get 'checkout_path/:id', to: 'home#payment' 
 
-  get 'admin_booking_status', to: "bookings#admin_booking_status"
-  get 'booking_checkout', to: "bookings#booking_checkout"
-  get 'cancel_url', to: "bookings#cancel_url"
-  get 'ipn_url', to: "bookings#ipn_url"
-  get 'return_url', to: "bookings#return_url"
-  get '/users/:id/subscription_index', to: "bookings#subscription_index", as: :users_subscriptions
+   get 'current_property', to: "properties#current_property"
 end

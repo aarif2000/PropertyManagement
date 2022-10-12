@@ -6,7 +6,7 @@
       <div class="card rounded-3" style="width:120%;">
         <div class="card-body p-4" >
             <p class="fw-bold mb-4">proceed to checkout:</p>
-            <%= form_with url: '/charge', method: :post  do |f| %>
+            <%= form_with url: {controller: 'home', action: 'charge'}, method: :post  do |f| %>
             <div class="row mb-4">
               <div class="col-7">
                 <div class="form-outline">

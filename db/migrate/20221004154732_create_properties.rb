@@ -18,7 +18,7 @@ class CreateProperties < ActiveRecord::Migration[7.0]
       t.integer :no_of_rooms 
       t.integer :available_rooms
       t.integer :beds
-      t.string :status
+      t.string :status, default: 'unbooked'
       t.integer :bathrooms
       t.belongs_to :user
 

@@ -1,0 +1,2 @@
+Stripe.api_key = 'sk_test_51Ls64TSGuPglbxZaEX99Kio8eEGm6QUyOdgAsQk6ybUtKEwE2pSji4DP4VH1ebN9G2hiNUp4iFTzPP6Ng1MOI4zT003EonwdEO'
+

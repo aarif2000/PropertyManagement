@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 class PropertiesController < ApplicationController
   def index
-    @q = Property.ransack(params[:q])
+    @q = Property.where(status: 'unbooked').ransack(params[:q])
     @properties= @q.result(distinct: true)
     @pagy, @properties = pagy(@properties.order(created_at: :desc))
-    @properties = current_user.property.all if current_user.role == 'Owner'
+    @properties = current_user.properties.all if current_user.role == 'Owner'
    
   end
 
@@ -39,9 +39,15 @@ class PropertiesController < ApplicationController
     redirect_to root_path
   end
 
+
+  def current_property 
+  end
+
   private
 
   def propertyparams
-    params.permit(:name, :city, :address, :property_type, :sharing, :property_rent,:no_of_rooms,:available_rooms, :beds, :bathrooms,:amenities_1,:amenities_2,:amenities_3, :avatar =>[])
+    params.permit(:name, :city, :address, :property_type,
+       :sharing, :property_rent,:no_of_rooms,:available_rooms, :beds,
+       :bathrooms,:amenities_1,:amenities_2,:amenities_3,:protocol_1, :protocol_2, :avatar =>[])
   end
 end

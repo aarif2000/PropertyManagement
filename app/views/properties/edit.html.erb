@@ -3,7 +3,7 @@
     <h4 class="mt-4 mb-4 display-4 text-center">Update Your  Property</h4>
   </div>
   <div class="row justify-content-center">
-        <%= form_with method: :patch do |form| %>
+        <%= form_with url: {controller: 'properties', action: 'update', id: params[:id]}, method: :patch do |form| %>
 
  <div class="form-group">
                  <%= form.label :name %>

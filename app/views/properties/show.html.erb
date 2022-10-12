@@ -6,7 +6,7 @@
           <%=render partial: 'layouts/caras', locals: {props: @properties}%>
 
           <div class="properties m-5", style='border: 2px solid darkred; padding: 30px;'>
-           <h5 align="center"> Property Details    </h5>
+           <h5 align="center"> Property Details </h5>
            <br>
             Name:
             <%= @properties.name %>
@@ -65,21 +65,22 @@
           </div>
     </div>
     
-    <div class="properties m-1", style='border: 2px solid darkred; padding: 15px;'>
-              <h5 align="center"> Protocols   </h5>
-           <ul>
-           <% @properties.protocol_1%>
+    <div class="properties m-5", style='border: 2px solid darkred; padding: 15px;'>
+    <div align="center">
+              <h5> Protocols   </h5>
            
-
-           </ul>
+           <%= @properties.protocol_1%>
+           <br>
+           <%=@properties.protocol_2%>
+          </div>
+           
           </div>
 
  <%# <%= render 'bookings/new'%> 
 
  <% if user_signed_in? && current_user.role=='Student'%>
- <%= link_to "Book", booking_path(@properties.id), class: 'btn btn-primary' %>
+ <%= link_to "Book",{controller: 'home', action: 'payment'}, class: 'btn btn-primary' %>
 <% end %>
-
   </div>
 </div>
 
