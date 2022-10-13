@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   }
   resources :properties, except: %i[create]
   resources :bookings 
+
   resources :checkout, only: [:create]
 
   post 'properties/new', to: 'properties#create'
@@ -19,7 +20,11 @@ Rails.application.routes.draw do
   post '/charge/:id', to: 'bookings#charge'
    get 'checkout_path/:id', to: 'bookings#payment', as: 'pay'
 
-   get '/confirm_booking/:id', to: 'bookings#confirm_booking'
+  get '/confirm_booking/:id', to: 'bookings#confirm_booking'
 
-   get 'current_property', to: "properties#current_property"
+  get 'current_property', to: "properties#current_property"
+
+  get 'new', to: 'bill#new'
+  post 'bill', to: 'bill#create'
+   
 end

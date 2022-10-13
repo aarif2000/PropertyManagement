@@ -78,6 +78,17 @@
           </div>
            
           </div>
+          <% if user_signed_in? && current_user.role=='Owner'%>
+          <%= link_to 'Generate Bill', new_path %>
+          <% end %>
+
+
+              <% if @properties.status=='Unbooked'%>
+          Booked by <%=@properties.tenants.first.name %>
+                        <br>
+                    <%=@properties.tenants.first.email  %>
+                    <% end %>
+
 
 
  <% if user_signed_in? && current_user.role=='Student'%>

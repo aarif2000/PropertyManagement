@@ -44,6 +44,7 @@ class StripeService
   def book_property(props,user,time)
     ActiveRecord::Base.transaction do
       props.tenants << user
+      props.update!(status: 'booked')
       make_booking(props: props,user: user, time: time)
     end
   end

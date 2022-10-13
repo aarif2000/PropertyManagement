@@ -8,6 +8,6 @@ class User < ApplicationRecord
          :confirmable
 
   has_many :properties
-
+  has_many :bills 
   belongs_to :property, optional: true
 end

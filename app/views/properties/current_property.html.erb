@@ -1,6 +1,6 @@
 <%Property.all.each do |p|%>
         <%if p.tenants.include?(current_user)%>
-        <%= image_tag p.avatar.first if p.avatar.attached?%>
+        <%= image_tag p.avatar.first, size: "480x360" if p.avatar.attached?%>
         <%=p.bookings.first.booking_time%>
         <br>created at: <%=time_ago_in_words(p.bookings.first.created_at)%> ago
         <%end%>
