@@ -10,14 +10,16 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations'
   }
   resources :properties, except: %i[create]
-  resources :bookings
+  resources :bookings 
   resources :checkout, only: [:create]
 
   post 'properties/new', to: 'properties#create'
   post '/properties/:id/edit', to: 'properties#update'
   post 'booking_path', to: 'bookings#create'
-  post '/charge/:id', to: 'home#charge'
-   get 'checkout_path/:id', to: 'booking#payment' 
+  post '/charge/:id', to: 'bookings#charge'
+   get 'checkout_path/:id', to: 'bookings#payment', as: 'pay'
+
+   get '/confirm_booking/:id', to: 'bookings#confirm_booking'
 
    get 'current_property', to: "properties#current_property"
 end

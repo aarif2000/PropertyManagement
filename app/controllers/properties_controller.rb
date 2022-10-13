@@ -39,7 +39,10 @@ class PropertiesController < ApplicationController
     redirect_to root_path
   end
 
+  def current_property
 
+  end
+  
   private
 
   def propertyparams

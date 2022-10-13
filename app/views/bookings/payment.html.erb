@@ -1,0 +1,45 @@
+<section class="p-4 p-md-5" style="
+    background-image: url(https://mdbcdn.b-cdn.net/img/Photos/Others/background3.webp);
+  ">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-5">
+      <div class="card rounded-3" style="width:120%;">
+        <div class="card-body p-4" >
+            <p class="fw-bold mb-4">proceed to checkout:</p>
+            <%= form_with url: "/charge/#{params[:id]}", method: :post  do |f| %>
+            <div class="row mb-4">
+              <div class="col-7">
+                <%=f.hidden_field :pet_id, value: params[:pet_id]%>
+                <%=f.hidden_field :price, value: params[:price]%>
+                <%=f.hidden_field :booking_time, value: params[:booking_time]%>
+                <div class="form-outline">
+                    <%=f.text_field :number, class: "form-control form-control-lg", placeholder: "Enter 16 digit valid card no.", style: "width:300px"%>
+                    <%=f.label :number, "Card_number",class:"form-label"%>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="form-outline">
+                    <%=f.text_field :exp_month, class: "form-control form-control-lg", placeholder: "Expiry Month", style: "width:155px"%>
+                  <%=f.label :exp_month, "Expire_month",class:"form-label"%>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="form-outline">
+                    <%=f.text_field :exp_year, class: "form-control form-control-lg", placeholder: "Expiry Year", style: "width:130px"%>
+                  <%=f.label :exp_year, "Expire_year",class:"form-label"%>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="form-outline">
+                    <%=f.text_field :cvc, class:"form-control form-control-lg", placeholder: "CVV", style: "width:75px"%>
+                    <%=f.label :cvc, class: "form-label" %>
+                </div>
+              </div>
+            </div>
+            <%=f.submit "continue", class:"btn btn-info"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<%end%> 

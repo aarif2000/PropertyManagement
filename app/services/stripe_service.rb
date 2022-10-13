@@ -41,7 +41,18 @@ class StripeService
       description: "Amount $#{amount_to_be_paid} charged for #{pet}"
     })
   end
-  def book_property(props,user)
-    props.tenants << user
+  def book_property(props,user,time)
+    ActiveRecord::Base.transaction do
+      props.tenants << user
+      make_booking(props: props,user: user, time: time)
+    end
+  end
+  private
+  def make_booking(props:,user:,time:)
+    booking = Booking.new
+    booking.user = user
+    booking.property = props
+    booking.booking_time = time
+    booking.save!
   end
 end

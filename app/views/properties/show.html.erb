@@ -72,13 +72,17 @@
            <%= @properties.protocol_1%>
            <br>
            <%=@properties.protocol_2%>
+           <br>
+           <%=@properties.protocol_2%>
+
           </div>
            
           </div>
 
 
  <% if user_signed_in? && current_user.role=='Student'%>
- <%= link_to "Book",{controller: 'home', action: 'payment'}, class: 'btn btn-primary' %>
+
+ <%= link_to "Click to Book",{controller: 'bookings', action: 'confirm_booking', id:@properties.id}, class: 'btn btn-primary' %>
 <% end %>
   </div>
 </div>

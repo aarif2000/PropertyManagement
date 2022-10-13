@@ -1,0 +1,18 @@
+<h3>Welcome  <%=current_user.name %>  </h3>
+<h3> <%=current_user.email %> </h3>
+
+
+
+<div class="row justify-content-center">
+        <%= form_with url: pay_path(params[:id]), method: :get do |form| %>
+           <div class="form-group">
+            <%= form.label :choose_booking_time %>
+            <div class='cont'><%=  form.select :booking_time, [['6 Months'],['12 Months'],['18 Months'], ['24 Months ']]%></div>
+          </div>
+
+          <% if user_signed_in? && current_user.role=='Student'%>
+ <%= form.submit "Book", class: 'btn btn-primary' %>
+<% end %>
+         
+<% end %>
+</div>
