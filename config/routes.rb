@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post '/properties/:id/edit', to: 'properties#update'
   post 'booking_path', to: 'bookings#create'
   post '/charge/:id', to: 'home#charge'
-   get 'checkout_path/:id', to: 'home#payment' 
+   get 'checkout_path/:id', to: 'booking#payment' 
 
    get 'current_property', to: "properties#current_property"
 end

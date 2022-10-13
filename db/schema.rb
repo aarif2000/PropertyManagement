@@ -74,23 +74,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_203719) do
     t.index ["user_id"], name: "index_properties_on_user_id"
   end
 
-  create_table "subscriptions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "transaction_id"
-    t.datetime "checkin_date"
-    t.datetime "checkout_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "transactions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.float "amount"
-    t.integer "user_id"
-    t.integer "owner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

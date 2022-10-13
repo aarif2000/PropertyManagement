@@ -40,9 +40,6 @@ class PropertiesController < ApplicationController
   end
 
 
-  def current_property 
-  end
-
   private
 
   def propertyparams
