@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <h4 class=" display-8 text-center">Share Your  Property</h4>
+  </div>
+  <div class="row justify-content-center">
+        <%= form_with model: @property,|form| %>
+          <div class="form-group">
+            <%= form.label :name %>
+            <%= form.text_field :name, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= form.label :city %>
+            <%= form.text_field :city, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :address %>
+            <%= form.text_area :address, class: 'form-control' %>
+          </div>
+          
+          <div class="form-group">
+            <%= form.label :sharing %>
+            <div class='cont'><%=  form.select :sharing, [['Double']]%></div>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :property_rent  %>
+            <%= form.number_field :property_rent, class: 'form-control' %>
+          </div>
+
+            <div class="form-group">
+            <%= form.label :bedrooms %>
+            <%= form.number_field :bedrooms, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :bathooms %>
+            <%= form.text_field :bathrooms, class: 'form-control' %>
+          </div>
+              <%= form.label "Property Photo"%>
+              <br/>
+              <%= form.file_field :avatar, accept: 'image/png,image/jpeg', multiple: 'true'%>
+          <div class="form-group">
+            <%= form.submit "post property for share", class: 'form-control btn-primary' %>
+          </div>
+    <% end %>
+  </div>
+</div>

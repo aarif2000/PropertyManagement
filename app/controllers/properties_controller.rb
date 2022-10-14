@@ -17,6 +17,10 @@ class PropertiesController < ApplicationController
     @properties = Property.new
   end
 
+  def new1
+    @properties = Property.new
+  end
+
   def create
     @properties = Property.new(propertyparams)
     @properties.user = current_user if user_signed_in?
@@ -48,9 +52,14 @@ class PropertiesController < ApplicationController
 
   end
 
-  def bill 
-    @bill=Bill.all
-  end 
+  # def bill 
+  #   @bill=Bill.all
+  # end 
+
+  def share 
+    @share = Property.find(params[:id])
+    
+  end
   
   private
 

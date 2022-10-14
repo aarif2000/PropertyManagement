@@ -24,5 +24,7 @@ Rails.application.routes.draw do
   get 'new/:id', to: 'bill#new', as: 'new'
   get 'show_bill/:id', to: 'bill#show', as: 'show_bill'
   post 'bill', to: 'bill#create'
+
+  post 'share/:id', to: 'properties#share', as: 'share'
    
 end

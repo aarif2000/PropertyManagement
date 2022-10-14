@@ -5,10 +5,10 @@
 
   def initialize(user)
     # Define abilities for the user here. For example:
-      if user.present?
-      can :manage, :all
-      else 
+      if user.role=='student'
       can :manage, :booking
+      else 
+      can :manage, :all
       end
     
     # The first argument to `can` is the action you are giving the user
