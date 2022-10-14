@@ -1,6 +1,5 @@
 <section class="p-4 p-md-5" style="
-    background-image: url(https://mdbcdn.b-cdn.net/img/Photos/Others/background3.webp);
-  ">
+    background-color: #241c30">
   <div class="row d-flex justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-5">
       <div class="card rounded-3" style="width:120%;">
@@ -31,12 +30,13 @@
               </div>
               <div class="col-2">
                 <div class="form-outline">
-                    <%=f.text_field :cvc, class:"form-control form-control-lg", placeholder: "CVV", style: "width:75px"%>
-                    <%=f.label :cvc, class: "form-label" %>
+                    <%=f.text_field :cvv, class:"form-control form-control-lg", placeholder: "CVV", style: "width:75px"%>
+                    <%=f.label :cvv, class: "form-label" %>
+                    
                 </div>
               </div>
             </div>
-            <%=f.submit "continue", class:"btn btn-info"%>
+            <%=f.submit "continue", class:"btn btn-success"%>
         </div>
       </div>
     </div>

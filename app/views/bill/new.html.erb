@@ -3,6 +3,7 @@
           <div class="form-group">
             <%= form.label :Enter_Rent_Amount %>
             <%= form.number_field :rent_amount, class: 'form-control' %>
+            <%= form.hidden_field :property_id, value: params[:id] %>
             <%= button_to 'submit'%>
             <% end %>
           </div>

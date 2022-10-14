@@ -15,11 +15,9 @@ class CreateProperties < ActiveRecord::Migration[7.0]
       t.string :protocol_2
       t.string :protocol_3
       t.integer :property_rent 
-      t.integer :no_of_rooms 
-      t.integer :available_rooms
-      t.integer :beds
-      t.string :status, default: 'unbooked'
+      t.integer :bedrooms
       t.integer :bathrooms
+      t.string :status, default: 'unbooked'
       t.belongs_to :user
 
       t.timestamps

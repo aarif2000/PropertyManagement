@@ -4,10 +4,15 @@
   </div>
   <div class="row">
           <%=render partial: 'layouts/caras', locals: {props: @properties}%>
+          <br>
+          <br>
 
-          <div class="properties m-5", style='border: 2px solid darkred; padding: 30px;'>
-           <h5 align="center"> Property Details </h5>
-           <br>
+
+<div class="card text-center bg-success">
+  <div class="card-body">
+    <h5 align="center"> Property Details </h5>
+     <br>
+            <br>
             Name:
             <%= @properties.name %>
               <br/>
@@ -25,8 +30,8 @@
             <%= @properties.property_rent %>
             <br/>
             <br/>
-            Beds: 
-            <%= @properties.beds %>
+            Bedrooms: 
+            <%= @properties.bedrooms %>
             <br/>
             <br/>
             Bathrooms:
@@ -44,56 +49,55 @@
             <br/>
             <br/>
           </div>
+          </div>
+          <br>
+          <br>
+          <br>
+    <div class="card text-center" style="width: 77rem;">
+     <div class="card-body">
+     <h5 class="list-group card-title text-center"> Amenities</h5>
+    <hr>
+    <p class="card-text"><%= @properties.amenities_1%></p>
+    <p class="card-text"><%= @properties.amenities_2%></p>
+    <p class="card-text"><%= @properties.amenities_3%></p>
 
-     
-    
-          <div class="properties m-5", style='border: 2px solid darkred; padding: 15px;'>
-              <h5 align="center"> Amenities   </h5>
-              <br>
-            First Amenities : 
-            <%= @properties.amenities_1 %>
-              <br/>
-              <br/>
-            Second Amenities : 
-            <%= @properties.amenities_2 %>
-              <br/>
-              <br/>
-            Third Amenities : 
-            <%= @properties.amenities_3 %>
-              <br/>
-              <br/>
-          </div>
-    </div>
-    
-    <div class="properties m-5", style='border: 2px solid darkred; padding: 15px;'>
-    <div align="center">
-              <h5> Protocols   </h5>
-           
-           <%= @properties.protocol_1%>
-           <br>
-           <%=@properties.protocol_2%>
-           <br>
-           <%=@properties.protocol_2%>
+  </div>
+</div>
 
-          </div>
-           
-          </div>
-          <% if user_signed_in? && current_user.role=='Owner'%>
-          <%= link_to 'Generate Bill', new_path %>
+<br>
+<br>
+
+  <div class="card text-center" style="width: 77rem;">
+  <div class="card-body">
+     <h5 class="list-group card-title text-center"> Protocols</h5>
+    <hr>
+    <p class="card-text"><%= @properties.protocol_1%></p>
+    <p class="card-text"><%= @properties.protocol_2%></p>
+
+  </div>
+</div>
+<br>
+<br>
+
+          <% if user_signed_in? && current_user.role=='Owner' && @properties.status=='booked'%>
+          <%= link_to 'Generate Bill', new_path(params[:id]), class: 'btn btn-primary' %>
           <% end %>
+          <br>
+          <br>
 
 
-              <% if @properties.status=='Unbooked'%>
-          Booked by <%=@properties.tenants.first.name %>
+              <% if @properties.status=='booked'%>
+          Booker Name <%=@properties.tenants.first.name %>
                         <br>
-                    <%=@properties.tenants.first.email  %>
+          Booker Email  <%=@properties.tenants.first.email  %>
                     <% end %>
 
 
 
  <% if user_signed_in? && current_user.role=='Student'%>
-
+<div class="text-center">
  <%= link_to "Click to Book",{controller: 'bookings', action: 'confirm_booking', id:@properties.id}, class: 'btn btn-primary' %>
+ </div>
 <% end %>
   </div>
 </div>

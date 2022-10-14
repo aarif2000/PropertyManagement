@@ -41,8 +41,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_174150) do
 
   create_table "bills", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "rent_amount"
+    t.bigint "property_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_bills_on_property_id"
+    t.index ["user_id"], name: "index_bills_on_user_id"
   end
 
   create_table "bookings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -67,11 +71,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_174150) do
     t.string "protocol_2"
     t.string "protocol_3"
     t.integer "property_rent"
-    t.integer "no_of_rooms"
-    t.integer "available_rooms"
-    t.integer "beds"
-    t.string "status", default: "unbooked"
+    t.integer "bedrooms"
     t.integer "bathrooms"
+    t.string "status", default: "unbooked"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

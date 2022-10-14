@@ -6,7 +6,20 @@ class Property < ApplicationRecord
   has_many :bills
   has_many :tenants, class_name: 'User'
   has_many_attached :avatar
-  # validates :name, presence: true
-  # validates :city, presence: true
-  # validates :address, presence: true
+  validates :name, presence: true
+  validates :city, presence: true
+  validates :address, presence: true
+  validates :property_type, presence: true 
+  validates :sharing, presence: true 
+  validates :amenities_1, presence: true 
+  validates :amenities_2, presence: true 
+  validates :amenities_3, presence: true 
+  validates :protocol_1, presence: true
+  validates :protocol_2, presence: true
+  validates :property_rent, presence: true 
+  validates :bedrooms, presence: true 
+  validates :bathrooms, presence: true 
+
+
+
 end

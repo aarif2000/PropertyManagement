@@ -1,0 +1,9 @@
+<div class="text-center my-3">
+
+Hey Your Monthly bill is  <%= @bill.rent_amount%> <br>
+please pay This bill  within
+<br>
+
+<%= from_time = Time.now - 3.days - 14.minutes - 25.seconds
+time_ago_in_words(from_time) %>
+<div>

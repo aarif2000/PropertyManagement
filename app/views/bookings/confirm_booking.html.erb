@@ -1,5 +1,9 @@
+<div class="text-center mb-2">
+
 <h3>Welcome  <%=current_user.name %>  </h3>
 <h3> <%=current_user.email %> </h3>
+<br>
+<br>
 
 
 
@@ -9,6 +13,8 @@
             <%= form.label :choose_booking_time %>
             <div class='cont'><%=  form.select :booking_time, [['6 Months'],['12 Months'],['18 Months'], ['24 Months ']]%></div>
           </div>
+          <br>
+        
 
           <% if user_signed_in? && current_user.role=='Student'%>
  <%= form.submit "Book", class: 'btn btn-primary' %>
@@ -16,3 +22,5 @@
          
 <% end %>
 </div>
+</div>
+

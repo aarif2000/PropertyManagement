@@ -1,8 +1,35 @@
+<div class="center my-4">
 <%Property.all.each do |p|%>
         <%if p.tenants.include?(current_user)%>
-        <%= image_tag p.avatar.first, size: "480x360" if p.avatar.attached?%>
+        <%= image_tag p.avatar.first, size: "480x480" if p.avatar.attached?%>
+
+        <div class="text-center">
+        Property Name : <%= p.name%>
+        <br>
+        Property City : <%= p.city%>
+        <br>
+        Property Rent : <%= p.property_rent%>
+        <br>
+        </div>
+        <hr>
+
+        <div class="text-center">
+        Booked Time <br>
         <%=p.bookings.first.booking_time%>
-        <br>created at: <%=time_ago_in_words(p.bookings.first.created_at)%> ago
+        <br>
+        <br>Booked On <%=time_ago_in_words(p.bookings.first.created_at)%> ago
+        </div>
+        <br>
+        <br>
+        <%= link_to 'Check Bill',show_bill_path(14) %> 
+        <br>
+        <%= link_to "shared my property", new_property_path %>
+
         <%end%>
 <%end%>
+</div>
+
+
+
+
     

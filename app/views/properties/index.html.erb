@@ -21,14 +21,14 @@
   <% end %>
   <% end %>
   </div>
+
   <br>
     <%@properties&.each do |property|%>
     <div style="display: flex; flex-direction justify-content center">
-    <div>
-    <%=image_tag url_for(property.avatar.first), size: "300x300" if property.avatar.attached?%>  
+    <div class="center mx-3">
+    <%=image_tag url_for(property.avatar.first), size: "400x400" if property.avatar.attached?%>  
     <hr/>
     </div>
-    
     <div>
     <table>
     <% if user_signed_in? && current_user.role=='Student'%>
@@ -40,7 +40,7 @@
          <br>
          <%= property.property_rent %>
          <br>
-         <%=property.beds%>
+         <%=property.bedrooms%>
          <br>
          <%= property.sharing %>
          <td><%= link_to 'Click to show more ', property_path(property.id) %></td>

@@ -18,13 +18,11 @@ Rails.application.routes.draw do
   post '/properties/:id/edit', to: 'properties#update'
   post 'booking_path', to: 'bookings#create'
   post '/charge/:id', to: 'bookings#charge'
-   get 'checkout_path/:id', to: 'bookings#payment', as: 'pay'
-
+  get 'checkout_path/:id', to: 'bookings#payment', as: 'pay'
   get '/confirm_booking/:id', to: 'bookings#confirm_booking'
-
   get 'current_property', to: "properties#current_property"
-
-  get 'new', to: 'bill#new'
+  get 'new/:id', to: 'bill#new', as: 'new'
+  get 'show_bill/:id', to: 'bill#show', as: 'show_bill'
   post 'bill', to: 'bill#create'
    
 end
