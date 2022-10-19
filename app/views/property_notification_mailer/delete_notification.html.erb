@@ -1,0 +1,10 @@
+<h1>Hello Owner </h1>
+<p> A new <%= @object.class.to_s %>  has been deleted below is details 
+</p>
+<br>
+<% @object.attributes.each do |attr_key, attr_value |%>
+<br>
+<strong><%= attr_key%>:  </strong>  <%= attr_value%>
+<% end %>
+
+<h4> Now the <%= @object.class.to_s %> has total of <%=@object_count%> records </h4>

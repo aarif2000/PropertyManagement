@@ -2,6 +2,10 @@
 
 class BookingsController < ApplicationController
     def index; end
+
+    def new 
+      @bookings = Booking.new
+    end 
   
     def profile 
     end
@@ -29,6 +33,7 @@ class BookingsController < ApplicationController
           s.book_property(prop,current_user,params[:booking_time])
           flash[:notice] = "Payment Succesfull!"
           redirect_to root_path(current_user.id)
+          PropertyNotificationMailer.booking_notification(prop).deliver_now
         else
           redirect_to user_path(current_user.id), alert: "some error occured"
         end

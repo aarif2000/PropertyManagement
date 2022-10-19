@@ -23,6 +23,7 @@ class BillController < ApplicationController
             @bill.property = @prop
             @bill.user = @prop.tenants.first
             if @bill.save
+                PropertyNotificationMailer.bill_notification(@bill).deliver_now 
             flash[:notice]= "Bill Created"
             redirect_to root_path
             end 

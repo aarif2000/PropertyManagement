@@ -17,15 +17,14 @@ class PropertiesController < ApplicationController
     @properties = Property.new
   end
 
-  def new1
-    @properties = Property.new
-  end
+  
 
   def create
     @properties = Property.new(propertyparams)
     @properties.user = current_user if user_signed_in?
 
     if @properties.save
+      PropertyNotificationMailer.create_notification(@properties).deliver_now 
     flash[:notice]= "Successfully Created Property"
     else 
       flash[:alert] = @properties.errors.full_messages
@@ -35,31 +34,32 @@ class PropertiesController < ApplicationController
 
   def update
     @property = Property.find(params[:id]).update(propertyparams)
-    flash[:notice]= "Successfully Updated  Property"
+    flash[:notice]= "Successfully Updated Property"
     redirect_to root_path
+    
 
   end
 
   def destroy
     @properties = Property.find_by(id: params[:id])
     @properties.destroy
+    PropertyNotificationMailer.delete_notification(@properties).deliver_now 
     flash[:alert]= "Successfully Deleted  Property"
     
     redirect_to root_path
   end
 
   def current_property
-
+        
   end
 
-  # def bill 
-  #   @bill=Bill.all
-  # end 
 
   def share 
     @share = Property.find(params[:id])
     
   end
+
+  
   
   private
 

@@ -1,32 +1,45 @@
 <div class="center my-4">
-<%Property.all.each do |p|%>
-        <%if p.tenants.include?(current_user)%>
-        <%= image_tag p.avatar.first, size: "480x480" if p.avatar.attached?%>
+        <%Property.all.each do |p|%>
+        <% if p.tenants.include?(current_user)%>
+    <%= image_tag p.avatar.first, size: "1080x480" if p.avatar.attached?%>
 
-        <div class="text-center">
-        Property Name : <%= p.name%>
-        <br>
-        Property City : <%= p.city%>
-        <br>
-        Property Rent : <%= p.property_rent%>
-        <br>
-        </div>
+</div>
+
+
+<div class="card text-light bg-dark text-center" style="width: 68rem;">
+  <div class="card-body">
+        <h5 class="card-title">Property Details</h5>
         <hr>
+       
+         <p class="card-text">Property Name : <%=p.name %></p>
+         <hr>
+        <p class="card-text">Property City : <%=p.city %></p>
+        <hr>
+        <p class="card-text">Property Rent : <%=p.property_rent %></p>
+        <hr>
+  </div>
+</div>
+<hr>
 
-        <div class="text-center">
-        Booked Time <br>
-        <%=p.bookings.first.booking_time%>
-        <br>
-        <br>Booked On <%=time_ago_in_words(p.bookings.first.created_at)%> ago
-        </div>
-        <br>
-        <br>
-        <%= link_to 'Check Bill',show_bill_path(14) %> 
-        <br>
-        <%= link_to "share my property",new_property_path  %>
+        <div class="card text-center" style="width: 68rem;">
+  <div class="card-header">
+    Time
+  </div>
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item"> Booking Duration : <%=p.bookings.first.booking_time%></li> 
+          <li class="list-group-item"> Booking Date : <%= time_tag Date.today (p.bookings.first.created_at)%> </li>
+      </ul>
+  </div>
+<hr>
+   
 
-        <%end%>
+    <div class="center">
+      <%= link_to "share my property", new_property_path,  class: 'btn btn-success' %>
+    </div>
+  <%end%> 
 <%end%>
+
+
 </div>
 
 

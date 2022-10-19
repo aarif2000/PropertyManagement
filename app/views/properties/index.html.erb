@@ -7,14 +7,14 @@
   <%= form.text_field :city_cont %>
    <br>
      <%= form.label :sharing %>
-     <%= form.select :sharing_eq, options_from_collection_for_select(Property.select("sharing").distinct, "id", "sharing") %>
+     <%= form.select :sharing_cont, options_from_collection_for_select(Property.select("sharing").distinct, "id", "sharing") %>
      <br>
       <%= form.label :property_type %>
-     <%= form.select :property_type_eq, options_from_collection_for_select(Property.select("property_type").distinct, "id", "property_type") %>
+     <%= form.select :property_type_cont, options_from_collection_for_select(Property.select("property_type").distinct, "id", "property_type") %>
      <br>
 
   <%= form.label :price %>
-  <%= form.number_field :property_rent_cont %>
+  <%= form.number_field :property_rent_eq %>
 
   <br>
   <%= form.submit %>
@@ -27,6 +27,7 @@
     <div style="display: flex; flex-direction justify-content center">
     <div class="center mx-3">
     <%=image_tag url_for(property.avatar.first), size: "400x400" if property.avatar.attached?%>  
+
     <hr/>
     </div>
     <div>
@@ -34,19 +35,26 @@
     <% if user_signed_in? && current_user.role=='Student'%>
 
 
-     <%= property.name %>
+       Property Name : <%= property.name %>
          <br>
-         <%= property.city %>
+         Property City :  <%= property.city %>
          <br>
-         <%= property.property_rent %>
+         Property Rent : <%= property.property_rent %>
          <br>
-         <%=property.bedrooms%>
+         Sharing : <%= property.sharing %>
          <br>
-         <%= property.sharing %>
+         Property Type : <%= property.property_type %>
+
          <td><%= link_to 'Click to show more ', property_path(property.id) %></td>
     <% else %>
    <tr>
         Property Name : <%= property.name %>
+        <br/>
+        Property City : <%= property.city %>
+        <br/>
+        Property Address : <%= property.address %>
+        <br/>
+        Property Rent : <%= property.property_rent %>
         <br/>
         <td><%= link_to 'Show', property_path(property.id) %></td>
         <br/>

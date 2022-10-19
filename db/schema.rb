@@ -69,7 +69,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_174150) do
     t.string "amenities_3"
     t.string "protocol_1"
     t.string "protocol_2"
-    t.string "protocol_3"
     t.integer "property_rent"
     t.integer "bedrooms"
     t.integer "bathrooms"

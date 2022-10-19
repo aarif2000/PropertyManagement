@@ -13,7 +13,6 @@ class CreateProperties < ActiveRecord::Migration[7.0]
       t.string :amenities_3
       t.string :protocol_1 
       t.string :protocol_2
-      t.string :protocol_3
       t.integer :property_rent 
       t.integer :bedrooms
       t.integer :bathrooms

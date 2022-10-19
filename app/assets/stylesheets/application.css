@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ 
+
+
 .cont #user_role{
     width: 100%;
     font-size: 150%;
@@ -20,15 +23,16 @@
 /* .cont #property_type{
   width: 100%;
   font-size: 150%;
-} */
+}
 
 .cont #sharing{
   width: 100%;
   font-size: 150%;
-}
+} */
 
 body{
-    background-color: #c3ede6;
+  
+    background-color: #ca0a0a;
 }
 
 /* Resets */
@@ -47,11 +51,6 @@ img {
   .carousel-control.left, .carousel-control.right {
     left: 0 !important;
     z-index: 1 !important;
-  }
-
-  .properties{
-    margin : 0px;
-    padding: 0px;
   }
 
   .carousel {
