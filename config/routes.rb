@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get 'show_bill/:id', to: 'bill#show', as: 'show_bill'
   post 'bill', to: 'bill#create'
   post 'share/:id', to: 'properties#share', as: 'share'
-  get 'update_status', to: 'properties#update_status'
+  get 'update_status/:id', to: 'properties#update_status', as: 'update_status'
 
    
 end

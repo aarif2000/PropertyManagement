@@ -63,7 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_174150) do
     t.string "city"
     t.string "address"
     t.string "property_type"
-    t.string "sharing"
+    t.string "sharing", default: "single"
     t.string "amenities_1"
     t.string "amenities_2"
     t.string "amenities_3"

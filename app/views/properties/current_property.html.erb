@@ -31,14 +31,10 @@
       </ul>
   </div>
 <hr>
-   
 
-    <div class="center">
-      <%= link_to "share my property", new_property_path,  class: 'btn btn-success' %>
-    </div>
-<%=p.status%>
-<%=Property::STATUSES%>
-<%= link_to p.status, update_status_path(p, status: p.status), method: :patch%>
+<br>
+<%= link_to 'Share My Property', update_status_path(p.id), class: 'btn btn-info'%>
+
 
 
   <%end%> 

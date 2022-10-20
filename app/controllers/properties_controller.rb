@@ -56,8 +56,9 @@ class PropertiesController < ApplicationController
 
   def update_status 
     @properties = Property.find(params[:id])
-    @property.update(status: params[:status])
-    redirect_to @property, notice: 'status changed '
+    @properties.update(status: "unbooked")
+    @properties.update(sharing: "double")
+    redirect_to root_path
   end
 
 
