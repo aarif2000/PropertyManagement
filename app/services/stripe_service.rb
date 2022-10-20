@@ -3,6 +3,7 @@ class StripeService
   def initialize()
     Stripe.api_key = ENV['STRIPE_SECRET_KEY']
   end
+
   def find_or_create_customer(user)
     if user.stripe_customer_id.present?
       stripe_customer = Stripe::Customer.retrieve(user.stripe_customer_id)
@@ -13,8 +14,11 @@ class StripeService
       })
       user.update(stripe_customer_id: stripe_customer.id)
     end
+
     stripe_customer
+
   end
+  
   def create_card_token(params)
     Stripe::Token.create({
       card: {
@@ -25,12 +29,14 @@ class StripeService
       },
     })
   end
+
   def create_stripe_customer_card(token, stripe_customer)
     Stripe::Customer.create_source(
       stripe_customer.id,
       {source: token}
     )
   end
+
   def create_stripe_charge(amount_to_be_paid,
     stripe_customer_id, card_id, property)
     Stripe::Charge.create({
@@ -41,6 +47,7 @@ class StripeService
       description: "Amount $#{amount_to_be_paid} charged for #{property}"
     })
   end
+
   def book_property(props,user,time)
     ActiveRecord::Base.transaction do
       props.tenants << user
@@ -48,7 +55,9 @@ class StripeService
       make_booking(props: props,user: user, time: time)
     end
   end
+
   private
+
   def make_booking(props:,user:,time:)
     booking = Booking.new
     booking.user = user

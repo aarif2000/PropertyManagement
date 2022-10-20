@@ -2,11 +2,11 @@
 class PropertiesController < ApplicationController
   load_and_authorize_resource
   def index
+    
     @q = Property.where(status: 'unbooked').ransack(params[:q])
     @properties= @q.result(distinct: true)
     @pagy, @properties = pagy(@properties.order(created_at: :desc))
     @properties = current_user.properties.all if current_user.role == 'Owner'
-   
   end
 
   def show
@@ -18,7 +18,6 @@ class PropertiesController < ApplicationController
   end
 
   
-
   def create
     @properties = Property.new(propertyparams)
     @properties.user = current_user if user_signed_in?
@@ -33,11 +32,13 @@ class PropertiesController < ApplicationController
   end
 
   def update
-    @property = Property.find(params[:id]).update(propertyparams)
+   if  @property = Property.find(params[:id]).update(propertyparams)
     flash[:notice]= "Successfully Updated Property"
+   else 
+    flash[:alert]= "Some Error ocurred"
+   end
     redirect_to root_path
     
-
   end
 
   def destroy
@@ -51,6 +52,12 @@ class PropertiesController < ApplicationController
 
   def current_property
         
+  end
+
+  def update_status 
+    @properties = Property.find(params[:id])
+    @property.update(status: params[:status])
+    redirect_to @property, notice: 'status changed '
   end
 
 

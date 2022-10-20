@@ -1,7 +1,7 @@
 <div class="center my-4">
         <%Property.all.each do |p|%>
         <% if p.tenants.include?(current_user)%>
-    <%= image_tag p.avatar.first, size: "1080x480" if p.avatar.attached?%>
+        <%= image_tag p.avatar.first, size: "1080x480" if p.avatar.attached?%>
 
 </div>
 
@@ -36,11 +36,18 @@
     <div class="center">
       <%= link_to "share my property", new_property_path,  class: 'btn btn-success' %>
     </div>
+<%=p.status%>
+<%=Property::STATUSES%>
+<%= link_to p.status, update_status_path(p, status: p.status), method: :patch%>
+
+
   <%end%> 
 <%end%>
 
 
 </div>
+
+
 
 
 

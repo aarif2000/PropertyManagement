@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Property < ApplicationRecord
+
+  STATUSES = [:booked, :unbooked]
+  validates :status, presence: true
+
   belongs_to :user
   has_many :bookings 
   has_many :bills
