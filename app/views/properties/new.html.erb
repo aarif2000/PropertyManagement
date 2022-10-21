@@ -3,7 +3,7 @@
       <h4 class=" display-8 text-center">New Property</h4>
   </div>
 
-  <% @property.errors.each do |attr, msg| %>
+  <% @property&.errors&.each do |attr, msg| %>
   <li>
     <%= @property.errors.full_messages_for(attr).first if @property.errors[attr].first == msg %>
   </li>

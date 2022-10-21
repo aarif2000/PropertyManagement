@@ -17,7 +17,7 @@
                   </div>
             <% end %>
       
-      <% if user_signed_in? && current_user.role=='Owner'%>
+      <% if user_signed_in? && (can? :manage, :property)%>
       <%= link_to 'Create Property', properties_new_path, class: 'btn btn-primary'%>
       <%= link_to 'Show Your Listed Properites', properties_path, class: 'btn btn-danger mx-3'%>
       <%elsif user_signed_in? && current_user.role=='Student' %>

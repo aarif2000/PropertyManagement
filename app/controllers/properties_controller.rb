@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 class PropertiesController < ApplicationController
-  load_and_authorize_resource
   def index
-    
+    authorize! :index, :property
     @q = Property.where(status: 'unbooked').ransack(params[:q])
     @properties= @q.result(distinct: true)
     @pagy, @properties = pagy(@properties.order(created_at: :desc))
@@ -10,10 +9,13 @@ class PropertiesController < ApplicationController
   end
 
   def show
+    authorize! :show, :property 
+
     @properties = Property.find(params[:id])
   end
 
   def new
+    authorize! :manage, :property
     @properties = Property.new
   end
 
