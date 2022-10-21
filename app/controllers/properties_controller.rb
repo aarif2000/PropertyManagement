@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class PropertiesController < ApplicationController
+  
   def index
     authorize! :index, :property
     @q = Property.where(status: 'unbooked').ransack(params[:q])
@@ -10,7 +11,6 @@ class PropertiesController < ApplicationController
 
   def show
     authorize! :show, :property 
-
     @properties = Property.find(params[:id])
   end
 
@@ -69,8 +69,6 @@ class PropertiesController < ApplicationController
     
   end
 
-  
-  
   private
 
   def propertyparams
